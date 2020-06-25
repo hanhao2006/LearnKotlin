@@ -3,6 +3,7 @@ import java.lang.Exception
 fun main() {
     var result: Double?
     var cal = Calculator()
+    var check:Boolean;
 
     displayTitle("Welcome to use simply calculator in Kotlin")
     var choose = menu();
@@ -27,6 +28,16 @@ fun main() {
         cal.num2 = getNum("Please enter number 2")
         result = cal.mul(cal.num1,cal.num2)
         println("${cal.num1} * ${cal.num2} = ${result}")
+    }else if(choose == 4.toByte()){
+        println("Division")
+        cal.num1 = getNum("Please enter number 1")
+        do {
+            cal.num2 = getNum("Please enter number 2")
+            check = cal.checkDivisor();
+        }while (!check)
+        val str: String = String.format("%.2f", cal.div())
+        println("${cal.num1} * ${cal.num2} = $str")
+
     }
 }
 
@@ -65,3 +76,5 @@ fun getNum(str:String): Double {
     }
     return 0.0
 }
+
+
