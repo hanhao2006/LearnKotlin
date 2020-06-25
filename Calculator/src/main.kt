@@ -3,43 +3,57 @@ import java.lang.Exception
 fun main() {
     var result: Double?
     var cal = Calculator()
-    var check:Boolean;
+    var check:Boolean
+    var option: String
 
     displayTitle("Welcome to use simply calculator in Kotlin")
     var choose = menu();
     //println(choose is Byte)
     when (choose) {
         1.toByte() -> {
-            println("Addition")
-            cal.num1 = getNum("Please enter number 1")
-            cal.num2 = getNum("Please enter number 2")
-            result= cal.add(cal.num1,cal.num2)
-            println("Result for ${cal.num1} + ${cal.num2} = ${result.toInt()}")
+            do{
+                println("Addition")
+                cal.num1 = getNum("Please enter number 1")
+                cal.num2 = getNum("Please enter number 2")
+                result= cal.add(cal.num1,cal.num2)
+                println("Result for ${cal.num1} + ${cal.num2} = ${result.toInt()}")
+                option = option();
+            }while (option == "Y")
+
         }
         2.toByte() -> {
-            println("Subtraction")
-            cal.num1 = getNum("Please enter number 1")
-            cal.num2 = getNum("Please enter number 2")
-            result= cal.sub(cal.num1,cal.num2)
-            println("${cal.num1} - ${cal.num2} = ${result.toInt()}")
+            do{
+                println("Subtraction")
+                cal.num1 = getNum("Please enter number 1")
+                cal.num2 = getNum("Please enter number 2")
+                result= cal.sub(cal.num1,cal.num2)
+                println("${cal.num1} - ${cal.num2} = ${result.toInt()}")
+                option = option()
+            }while (option == "Y")
+
         }
         3.toByte() -> {
-            println("Multiplication")
-            cal.num1 = getNum("Please enter number 1")
-            cal.num2 = getNum("Please enter number 2")
-            result = cal.mul(cal.num1,cal.num2)
-            println("${cal.num1} * ${cal.num2} = ${result}")
+            do{
+                println("Multiplication")
+                cal.num1 = getNum("Please enter number 1")
+                cal.num2 = getNum("Please enter number 2")
+                result = cal.mul(cal.num1,cal.num2)
+                println("${cal.num1} * ${cal.num2} = ${result}")
+                option = option()
+            }while (option == "Y")
         }
         4.toByte() -> {
-            println("Division")
-            cal.num1 = getNum("Please enter number 1")
             do {
-                cal.num2 = getNum("Please enter number 2")
-                check = cal.checkDivisor();
-            }while (!check)
-            val str: String = String.format("%.2f", cal.div())
-            println("${cal.num1} * ${cal.num2} = $str")
-
+                println("Division")
+                cal.num1 = getNum("Please enter number 1")
+                do {
+                    cal.num2 = getNum("Please enter number 2")
+                    check = cal.checkDivisor();
+                }while (!check)
+                val str: String = String.format("%.2f", cal.div())
+                println("${cal.num1} * ${cal.num2} = $str")
+                option = option()
+            }while (option == "Y")
         }
     }
 }
@@ -78,6 +92,11 @@ fun getNum(str:String): Double {
         }
     }
     return 0.0
+}
+
+fun option():String{
+    println("Do you want to Calculator again?(Y/N) ")
+    return readLine().toString()
 }
 
 
