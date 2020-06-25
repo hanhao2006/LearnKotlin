@@ -7,37 +7,40 @@ fun main() {
 
     displayTitle("Welcome to use simply calculator in Kotlin")
     var choose = menu();
-
-
     //println(choose is Byte)
-    if(choose == 1.toByte()){
-        println("Addition")
-        cal.num1 = getNum("Please enter number 1")
-        cal.num2 = getNum("Please enter number 2")
-        result= cal.add(cal.num1,cal.num2)
-        println("Result for ${cal.num1} + ${cal.num2} = ${result.toInt()}")
-    }else if (choose == 2.toByte()){
-        println("Subtraction")
-        cal.num1 = getNum("Please enter number 1")
-        cal.num2 = getNum("Please enter number 2")
-        result= cal.sub(cal.num1,cal.num2)
-        println("${cal.num1} - ${cal.num2} = ${result.toInt()}")
-    }else if(choose == 3.toByte()){
-        println("Multiplication")
-        cal.num1 = getNum("Please enter number 1")
-        cal.num2 = getNum("Please enter number 2")
-        result = cal.mul(cal.num1,cal.num2)
-        println("${cal.num1} * ${cal.num2} = ${result}")
-    }else if(choose == 4.toByte()){
-        println("Division")
-        cal.num1 = getNum("Please enter number 1")
-        do {
+    when (choose) {
+        1.toByte() -> {
+            println("Addition")
+            cal.num1 = getNum("Please enter number 1")
             cal.num2 = getNum("Please enter number 2")
-            check = cal.checkDivisor();
-        }while (!check)
-        val str: String = String.format("%.2f", cal.div())
-        println("${cal.num1} * ${cal.num2} = $str")
+            result= cal.add(cal.num1,cal.num2)
+            println("Result for ${cal.num1} + ${cal.num2} = ${result.toInt()}")
+        }
+        2.toByte() -> {
+            println("Subtraction")
+            cal.num1 = getNum("Please enter number 1")
+            cal.num2 = getNum("Please enter number 2")
+            result= cal.sub(cal.num1,cal.num2)
+            println("${cal.num1} - ${cal.num2} = ${result.toInt()}")
+        }
+        3.toByte() -> {
+            println("Multiplication")
+            cal.num1 = getNum("Please enter number 1")
+            cal.num2 = getNum("Please enter number 2")
+            result = cal.mul(cal.num1,cal.num2)
+            println("${cal.num1} * ${cal.num2} = ${result}")
+        }
+        4.toByte() -> {
+            println("Division")
+            cal.num1 = getNum("Please enter number 1")
+            do {
+                cal.num2 = getNum("Please enter number 2")
+                check = cal.checkDivisor();
+            }while (!check)
+            val str: String = String.format("%.2f", cal.div())
+            println("${cal.num1} * ${cal.num2} = $str")
 
+        }
     }
 }
 
