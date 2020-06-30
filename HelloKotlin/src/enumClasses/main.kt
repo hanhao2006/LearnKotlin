@@ -1,0 +1,5 @@
+package enumClasses
+
+fun main() {
+
+}

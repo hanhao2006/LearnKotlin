@@ -1,0 +1,4 @@
+package interfaceKotlin
+
+class Animal {
+}
